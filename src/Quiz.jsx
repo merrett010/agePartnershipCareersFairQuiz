@@ -4,7 +4,10 @@ class Quiz extends Component {
     constructor(props) {
         super(props)
     }
-
+    this.state = {
+        currentAnswer: 0,
+        correctAnswers: 0
+    }
 
     render() {
         return (
