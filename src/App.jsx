@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
-// import io from 'socket.io-client'
-// let socket = io();
+import Quiz from './Quiz.jsx';
 
 class App extends Component {
     constructor(props) {
         super(props)
     }
 
+
     render() {
         return (
             <div>
-                <h1 className="banner-text">Test</h1>
+                <h1 className="banner-text">You shall not pass! ... this quiz</h1>
+                <Quiz />
             </div>
         );
     }
