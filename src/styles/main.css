@@ -1,6 +1,6 @@
 * {
     font-family: "Open Sans",sans-serif,arial;
-  }
+}
 
 body {
     background-color: #1E3F65;
@@ -17,7 +17,7 @@ body {
     margin: 5px auto;
     border: 1px solid #B22418;
     border-radius: 20px;
-    padding: 5px 20px 15px 20px;
+    padding: 20px;
     background-color: white;
     /* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -35,4 +35,26 @@ body {
     flex-grow: 1;
     width: 60px;
     margin-right: auto;
+}
+
+.next-q-button {
+    float: right;
+    box-shadow: rgb(207, 134, 108) 0px 1px 0px 0px inset;
+    background: linear-gradient(rgb(208, 69, 27) 5%, rgb(188, 51, 21) 100%) rgb(208, 69, 27);
+    border-radius: 3px;
+    border: 1px solid rgb(148, 41, 17);
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: rgb(133, 70, 41) 0px 1px 0px;
+}
+
+.button-row {
+    position: relative;
+    height: 20px;
+    margin-top: 10px;
 }
