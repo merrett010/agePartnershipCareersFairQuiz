@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Question from './Question.jsx';
+import Questions from './Questions.jsx';
 
 class Quiz extends Component {
     constructor(props) {
@@ -9,7 +9,7 @@ class Quiz extends Component {
     render() {
         return (
             <div className="question-block">
-                <Question />
+                <Questions />
             </div>
         );
     }
