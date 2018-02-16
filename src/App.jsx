@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import Quiz from './Quiz.jsx';
+import io from 'socket.io-client';
+let socket = io();
 
 class App extends Component {
     constructor(props) {
