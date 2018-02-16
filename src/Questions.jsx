@@ -27,7 +27,7 @@ class Questions extends Component {
             ],
             correctAnswers: 0,
             currentQuestion: 0,
-            userEmail: 'default@test.com',
+            userEmail: '',
             userName: '',
             consent: ''
         };
@@ -58,7 +58,9 @@ class Questions extends Component {
                 { this.state.currentQuestion === 0
                     ? <Landing
                         userEmail = {this.state.userEmail}
-                        updateEmail = {handle => this.updateEmail(handle)}
+                        updateEmail = {email => this.updateEmail(email)}
+                        userName = {this.state.userName}
+                        updateName = {name => this.updateName(name)}
                         />
                     : null
                 }
