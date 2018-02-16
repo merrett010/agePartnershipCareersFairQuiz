@@ -1,7 +1,8 @@
 var app = require('express')();
 var http = require('http').Server(app);
 var path = require('path');
-// var io = require('socket.io')(http);
+var fs = require('fs');
+var io = require('socket.io')(http);
 
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/index.html');
@@ -14,6 +15,23 @@ app.get('/react-jsx/', (req, res) => {
 app.get('/logo-img/', (req, res) => {
   res.sendFile(path.resolve(__dirname + '/./logo-inverted.png'));
 });
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
+  socket.on('disconnect', () => {
+      console.log('user disconnected');
+  });
+  socket.on('formComplete', (details) => {
+      var jsondetails = JSON.stringify(details);
+      fs.appendFile("test.json", jsondetails, function(err) {
+          if(err) {
+              return console.log(err);
+          }
+          console.log("The file was saved!");
+      });
+  })
+});
+
 
 
 http.listen(3000, () => {
