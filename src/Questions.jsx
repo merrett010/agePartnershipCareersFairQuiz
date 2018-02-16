@@ -11,7 +11,7 @@ class Questions extends Component {
             qFourAnswer: 0,
             correctAnswers: 0,
             currentQuestion: 0,
-            userEmail: 'default@test.com',
+            userEmail: '',
             userName: ''
         };
     }
@@ -39,6 +39,8 @@ class Questions extends Component {
                     ? <Landing
                         userEmail = {this.state.userEmail}
                         updateEmail = {email => this.updateEmail(email)}
+                        userName = {this.state.userName}
+                        updateName = {name => this.updateName(name)}
                         />
                     : null
                 }
