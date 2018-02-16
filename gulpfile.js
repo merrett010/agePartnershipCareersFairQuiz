@@ -17,25 +17,26 @@ gulp.task("compile", function() {
     return stream;
 })
 
-gulp.task("webpack", function() {
-    return gulp.src(['src/**/index.jsx', '!src/react/**/*-init.jsx~'])
-      .pipe(named())
-      .pipe(plumber())
-      .pipe(webpack( config ))
-      .pipe(gulp.dest("build/js/react"));
+gulp.task('develop', ['watch'], function() {
+	browserSync.init(null, {
+		proxy: "http://localhost:3000",
+        files: ["/./build/**/*.*"],
+        browser: "google chrome",
+        port: 7000,
+	});
+    gulp.watch('src/**/*', ['compile-watch']);
 });
-
-gulp.task('developReact', ['webpack'], function() {
-    browserSync.init({
-        server: {
-            baseDir: "./"
-        },
-        startPath : "public"
-    });
-    gulp.watch('src/**/*', ['webpack-watch']);
-});
-gulp.task('webpack-watch', ['webpack'], function (done) {
+gulp.task('compile-watch', ['compile'], function (done) {
     browserSync.reload();
     done();
 });
 
+gulp.task('watch', ['compile',], function () {
+  var stream = nodemon(
+      {
+         script: 'public/backend.js', // run ES5 code
+         watch: ['src/**/*','public/'], // watch ES2015 code
+         tasks: ['compile-watch'] // compile synchronously onChange
+       }
+   )
+});
