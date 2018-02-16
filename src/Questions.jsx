@@ -5,16 +5,36 @@ class Questions extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            qOneAnswer: 0,
-            qTwoAnswer: 0,
-            qThreeAnswer: 0,
-            qFourAnswer: 0,
+            questions: [
+                {
+                    "number": 1,
+                    "content": "test1",
+                    "answer": null,
+                    "validate": null
+                },
+                {
+                    "number": 2,
+                    "content":"test2",
+                    "answer": null,
+                    "validate": null
+                },
+                {
+                    "number": 3,
+                    "content":"test3",
+                    "answer": null,
+                    "validate": null
+                }
+            ],
             correctAnswers: 0,
             currentQuestion: 0,
             userEmail: 'default@test.com',
-            userName: ''
+            userName: '',
+            consent: ''
         };
     }
+
+
+
 
     updateAnswer1(update) {
         this.setState({qOneAnswer: update.target.value});
@@ -38,7 +58,7 @@ class Questions extends Component {
                 { this.state.currentQuestion === 0
                     ? <Landing
                         userEmail = {this.state.userEmail}
-                        updateEmail = {email => this.updateEmail(email)}
+                        updateEmail = {handle => this.updateEmail(handle)}
                         />
                     : null
                 }
@@ -64,12 +84,16 @@ function Landing(props) {
             <h2 className="central-block gutter-bottom-30">Please fill out the form to get started! </h2>
             <div className="central-block">
                 <div className="gutter-bottom-10">
-                    <label className="font16" htmlFor="emailInput">Name: </label>
-                    <input className="font16" id="emailInput" type="text" onChange={props.updateName} value={props.userName}/>
+                    <label className="font16" htmlFor="nameInput">Name: </label>
+                    <input className="font16" id="nameInput" type="text" name="userName" onChange={props.updateName} value={props.userName}/>
                 </div>
                 <div className="gutter-bottom-10">
                     <label className="font16" htmlFor="emailInput">Email: </label>
-                    <input className="font16" id="emailInput" type="email" onChange={props.updateEmail} value={props.userEmail}/>
+                    <input className="font16" id="emailInput" type="email" name="userEmail" onChange={props.updateEmail} value={props.userEmail}/>
+                </div>
+                <div className="gutter-bottom-10">
+                    <label className="font16" htmlFor="consent">Are you happy for us to use your details and answers to contact you about opportunities at Age Partnership? </label>
+                    <input className="font16" id="consent" type="checkbox" name="consent" onChange={props.updateSt} />
                 </div>
             </div>
         </div>
