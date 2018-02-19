@@ -134,10 +134,10 @@ function Landing(props) {
 function Question1(props) {
     return (
         <div>
-            <h2 className="question-title">Question 1: THIS IS QUESTION ONE</h2>
+            <h3 className="question-title">Q1:  Sally likes fizzy drinks very much. At the local supermarket, for every 5 empty bottles she receives a full bottle. As part of a recycling initiative, she manages to collect 77 empty bottles. How many bottles of fizzy drink will she be able to drink in total?</h3>
                 <div className="answer-block">
                 <div className="answer-option">
-                    <label htmlFor="answer-one">Yes</label>
+                    <label htmlFor="answer-one">15</label>
                     <input
                         id="answer-one"
                         type="radio"
@@ -147,7 +147,7 @@ function Question1(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-two">Maybe</label>
+                    <label htmlFor="answer-two">19</label>
                     <input
                         id="answer-two"
                         type="radio"
@@ -157,7 +157,7 @@ function Question1(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-three">Yes3</label>
+                    <label htmlFor="answer-three">18</label>
                     <input
                         id="answer-three"
                         type="radio"
@@ -167,7 +167,7 @@ function Question1(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-four">No!</label>
+                    <label htmlFor="answer-four">17</label>
                     <input
                         id="answer-four"
                         type="radio"
@@ -184,10 +184,10 @@ function Question1(props) {
 function Question2(props) {
     return (
         <div>
-            <h2 className="question-title">Question 2: Test Q2 </h2>
+            <h3 className="question-title">Q2:  A number of children are standing in a circle. They are evenly spaced and the 7th child is directly opposite the 18th child. How many children are there altogether?</h3>
             <div className="answer-block">
                 <div className="answer-option">
-                    <label htmlFor="answer-one">Yes</label>
+                    <label htmlFor="answer-one">23</label>
                     <input
                         id="answer-one"
                         type="radio"
@@ -197,7 +197,7 @@ function Question2(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-two">Maybe</label>
+                    <label htmlFor="answer-two">25</label>
                     <input
                         id="answer-two"
                         type="radio"
@@ -207,7 +207,7 @@ function Question2(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-three">Yes3</label>
+                    <label htmlFor="answer-three">24</label>
                     <input
                         id="answer-three"
                         type="radio"
@@ -217,7 +217,7 @@ function Question2(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-four">No!</label>
+                    <label htmlFor="answer-four">22</label>
                     <input
                         id="answer-four"
                         type="radio"
@@ -234,10 +234,10 @@ function Question2(props) {
 function Question3(props) {
     return (
         <div>
-            <h2 className="question-title">Question 3: DONT QUESTION THE QUESTION </h2>
+            <h3 className="question-title">Q3:  PLACEHOLDER QUESTION </h3>
             <div className="answer-block">
                 <div className="answer-option">
-                    <label htmlFor="answer-one">gtfo</label>
+                    <label htmlFor="answer-one">PLA</label>
                     <input
                         id="answer-one"
                         type="radio"
@@ -247,7 +247,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-two">Maybe</label>
+                    <label htmlFor="answer-two">CEH</label>
                     <input
                         id="answer-two"
                         type="radio"
@@ -257,7 +257,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-three">1</label>
+                    <label htmlFor="answer-three">OLD</label>
                     <input
                         id="answer-three"
                         type="radio"
@@ -267,7 +267,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-four">No!</label>
+                    <label htmlFor="answer-four">ER</label>
                     <input
                         id="answer-four"
                         type="radio"
@@ -284,7 +284,7 @@ function Question3(props) {
 function Question4(props) {
     return (
         <div>
-            <h2 className="question-title">Bonus Question! Pills and stuff </h2>
+            <h3 className="question-title">Bonus Question:  There are 10 identical bottles of identical pills. 9 of the bottles contain pills that weigh 10mg each but, due to a manufacturing error, 1 bottle contains pills that weigh 11mg each. Given a Weighing scale, how would you find the bottle with the heavier pills? You can use the scale only once. </h3>
             <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">Please outline your answer in the following box:</label>
@@ -304,15 +304,3 @@ function Question4(props) {
 }
 
 export default Questions;
-
-
-
-
-
-
-
-
-
-
-
-
