@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
+let socket = io();
 
 
 class Questions extends Component {
@@ -42,6 +44,16 @@ class Questions extends Component {
         this.setState({consent: toggle})
     }
 
+    handleComplete() {
+    event.preventDefault();
+    socket.emit('formComplete', this.state);
+    this.setState({correctAnswers: 0,
+                  currentQuestion: 0,
+                  userEmail: '',
+                  userName: '',
+                  consent: false})
+    }
+
     updateAnswer(update) {
         const questions = this.state.questions;
         const qArray = this.state.currentQuestion - 1;
@@ -79,7 +91,7 @@ class Questions extends Component {
                           <Question4 updateAnswer = {update => this.updateAnswer(update)} />
                           <div className="button-row">
                               <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}>Back <i className="fa fa-chevron-left"></i></button>
-                              <button className="next-q-button" type="button" onClick = {() => handleComplete()}>Finish <i className="fa fa-chevron-right"></i></button>
+                              <button className="next-q-button" type="button" onClick = {() => this.handleComplete()}>Finish <i className="fa fa-chevron-right"></i></button>
                           </div>
                       </div>
                     : <div>

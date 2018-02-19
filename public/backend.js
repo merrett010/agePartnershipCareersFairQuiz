@@ -23,7 +23,7 @@ io.on('connection', (socket) => {
   });
   socket.on('formComplete', (details) => {
       var jsondetails = JSON.stringify(details);
-      fs.appendFile("test.json", jsondetails, function(err) {
+      fs.appendFile("donotdelete.json", jsondetails + "\n", function(err) {
           if(err) {
               return console.log(err);
           }
