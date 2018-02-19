@@ -25,7 +25,7 @@ body {
 }
 
 .answer-block {
-    width: 400px;
+    width: 500px;
     margin: auto;
     display: flex;
     flex-wrap: nowrap;
@@ -34,7 +34,6 @@ body {
 
 .answer-option {
     flex-grow: 1;
-    width: 60px;
     margin-right: auto;
 }
 
@@ -52,6 +51,26 @@ body {
     padding: 6px 24px;
     text-decoration: none;
     text-shadow: rgb(133, 70, 41) 0px 1px 0px;
+}
+
+.back-button {
+    float: left;
+    box-shadow: black 0px 1px 0px 0px inset;
+    background: black;
+    border-radius: 3px;
+    border: 1px solid black;
+    display: inline-block;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+    text-shadow: black 0px 1px 0px;
+}
+
+.answer-textbox {
+    width: 100%;
 }
 
 .button-row {

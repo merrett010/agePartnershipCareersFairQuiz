@@ -17,6 +17,10 @@ class Questions extends Component {
                 {
                     "answer": null,
                     "validate": null
+                },
+                {
+                    "answer": null,
+                    "validate": null
                 }
             ],
             correctAnswers: 0,
@@ -70,9 +74,24 @@ class Questions extends Component {
                     ? <Question3 updateAnswer = {update => this.updateAnswer(update)} />
                     : null
                 }
-                <div className="button-row">
-                    <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
-                </div>
+                { this.state.currentQuestion === 4
+                    ? <div>
+                          <Question4 updateAnswer = {update => this.updateAnswer(update)} />
+                          <div className="button-row">
+                              <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}>Back <i className="fa fa-chevron-left"></i></button>
+                              <button className="next-q-button" type="button" onClick = {() => handleComplete()}>Finish <i className="fa fa-chevron-right"></i></button>
+                          </div>
+                      </div>
+                    : <div>
+                          <div className="button-row">
+                              {this.state.currentQuestion !== 0
+                                  ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}>Back <i className="fa fa-chevron-left"></i></button>
+                                  : null
+                              }
+                              <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
+                          </div>
+                      </div>
+                }
             </div>
         );
     }
@@ -171,7 +190,7 @@ function Question2(props) {
                         id="answer-two"
                         type="radio"
                         name="answer"
-                        value=""
+                        value="2"
                         onChange={props.updateAnswer}
                     />
                 </div>
@@ -221,7 +240,7 @@ function Question3(props) {
                         id="answer-two"
                         type="radio"
                         name="answer"
-                        value=""
+                        value="2"
                         onChange={props.updateAnswer}
                     />
                 </div>
@@ -242,6 +261,28 @@ function Question3(props) {
                         type="radio"
                         name="answer"
                         value="4"
+                        onChange={props.updateAnswer}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Question4(props) {
+    return (
+        <div>
+            <h2 className="question-title">Bonus Question! Pills and stuff </h2>
+            <div className="answer-block">
+                <div className="answer-option">
+                    <label htmlFor="answer-one">Please outline your answer in the following box:</label>
+                    <textarea
+                        id="answer-one"
+                        className="answer-textbox"
+                        cols="40"
+                        rows="6"
+                        type="text"
+                        name="answer"
                         onChange={props.updateAnswer}
                     />
                 </div>
