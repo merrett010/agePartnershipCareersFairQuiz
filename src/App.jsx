@@ -12,7 +12,7 @@ class App extends Component {
     render() {
         return (
             <div>
-                <h1 className="banner-text">You shall not pass... this quiz!</h1>
+                <h1 className="banner-text bold">You shall not pass... this quiz!</h1>
                 <Quiz />
             </div>
         );
