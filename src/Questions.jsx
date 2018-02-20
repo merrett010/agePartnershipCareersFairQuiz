@@ -10,26 +10,25 @@ class Questions extends Component {
             questions: [
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
-                    "answer": null,
-                    "validate": null
+                    "answer": null
                 }
             ],
             correctAnswers: 0,
             currentQuestion: 0,
             userEmail: '',
             userName: '',
-            consent: false
+            consent: true
         };
     }
 
@@ -46,9 +45,24 @@ class Questions extends Component {
 
     calculateScore() {
         let i = 0;
-        if(this.state.questions[0].answer == '2') {i+=1;}
-        if(this.state.questions[1].answer == '4') {i+=1;}
-        // if(this.state.questions[2].answer === TODO) {this.setState(correctAnswers: this.state.correctAnswers + 1);}
+        if(this.state.questions[0].answer == '2') {
+            i+=1;
+            var qState = this.state.questions;
+            qState[0].correct = true;
+            this.setState({qState});
+        }
+        if(this.state.questions[1].answer == '4') {
+            i+=1;
+            var qState = this.state.questions;
+            qState[1].correct = true;
+            this.setState({qState});
+        }
+        // if(this.state.questions[2].answer === TODO) {
+        //     i+=1;
+        //     var qState = this.state.questions;
+        //     qState[2].correct = true;
+        //     this.setState({qState});
+        // }
         return i;
     }
 
@@ -60,19 +74,18 @@ class Questions extends Component {
                 questions: [
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
-                        "answer": null,
-                        "validate": null
+                        "answer": null
                     }
                 ],
                 correctAnswers: 0,
@@ -156,7 +169,7 @@ function Landing(props) {
                 </div>
                 <div className="gutter-bottom-10">
                     <label className="font16" htmlFor="consent">Are you happy for us to use your details and answers to contact you about opportunities at Age Partnership? </label>
-                    <input className="font16" id="consent" type="checkbox" name="consent" onClick={props.updateCon} value={props.consent}/>
+                    <input className="font16" id="consent" type="checkbox" name="consent" onClick={props.updateCon} value={props.consent} checked={props.consent}/>
                 </div>
             </div>
         </div>
@@ -166,7 +179,7 @@ function Landing(props) {
 function Question1(props) {
     return (
         <div>
-            <h3 className="question-title">Q1:  Sally likes fizzy drinks very much. At the local supermarket, for every 5 empty bottles she returns, she gets a full bottle. <br/><br/>As part of a recycling initiative, she manages to collect 77 empty bottles. How many bottles of fizzy drink will she be able to drink in total?</h3>
+            <h3 className="question-title"><span className="bold">Q1:</span> Sally likes fizzy drinks very much. At the local supermarket, for every 5 empty bottles she returns, she gets a full bottle. <br/><br/>As part of a recycling initiative, she finds 77 empty bottles. How many bottles full of fizzy drink will she be able to get in total?</h3>
                 <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">15</label>
@@ -216,7 +229,7 @@ function Question1(props) {
 function Question2(props) {
     return (
         <div>
-            <h3 className="question-title">Q2:  A number of children are standing in a circle. They are evenly spaced and the 7th child is directly opposite the 18th child. How many children are there altogether?</h3>
+            <h3 className="question-title"><span className="bold">Q2:</span>  A number of children are standing in a circle. They are evenly spaced and the 7th child is directly opposite the 18th child. How many children are there altogether?</h3>
             <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">23</label>
@@ -266,7 +279,7 @@ function Question2(props) {
 function Question3(props) {
     return (
         <div>
-            <h3 className="question-title">Q3:  PLACEHOLDER QUESTION </h3>
+            <h3 className="question-title"><span className="bold">Q3:</span>  PLACEHOLDER QUESTION </h3>
             <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">PLA</label>
@@ -316,7 +329,7 @@ function Question3(props) {
 function Question4(props) {
     return (
         <div>
-            <h3 className="question-title">Bonus Question:  There are 10 identical bottles of identical pills. 9 of the bottles contain pills that weigh 10mg each but, due to a manufacturing error, 1 bottle contains pills that weigh 11mg each. Given a Weighing scale, how would you find the bottle with the heavier pills? You can use the scale only once. </h3>
+            <h3 className="question-title"><span className="bold">Bonus Question:</span>  There are 10 identical bottles of identical pills. 9 of the bottles contain pills that weigh 10mg each but, due to a manufacturing error, 1 bottle contains pills that weigh 11mg each. <br/><br/>Given a weighing scale that you can only use to measure once, how would you find the bottle with the heavier pills? </h3>
             <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">Please outline your answer in the following box:</label>

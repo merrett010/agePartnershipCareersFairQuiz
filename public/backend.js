@@ -20,10 +20,6 @@ app.get('/favicon/', (req, res) => {
   res.sendFile(path.resolve(__dirname + '/./favicon.ico'));
 });
 
-app.get('/mark/', (req, res) => {
-  res.sendFile(path.resolve(__dirname + '/./Mark.jpg'));
-});
-
 io.on('connection', (socket) => {
   console.log('a user connected');
   socket.on('disconnect', () => {
