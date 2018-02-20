@@ -10,19 +10,18 @@ class Questions extends Component {
             questions: [
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
                     "answer": null,
-                    "validate": null
+                    "correct": false
                 },
                 {
-                    "answer": null,
-                    "validate": null
+                    "answer": null
                 }
             ],
             correctAnswers: 0,
@@ -46,9 +45,24 @@ class Questions extends Component {
 
     calculateScore() {
         let i = 0;
-        if(this.state.questions[0].answer == '2') {i+=1;}
-        if(this.state.questions[1].answer == '4') {i+=1;}
-        // if(this.state.questions[2].answer === TODO) {this.setState(correctAnswers: this.state.correctAnswers + 1);}
+        if(this.state.questions[0].answer == '2') {
+            i+=1;
+            var qState = this.state.questions;
+            qState[0].correct = true;
+            this.setState({qState});
+        }
+        if(this.state.questions[1].answer == '4') {
+            i+=1;
+            var qState = this.state.questions;
+            qState[1].correct = true;
+            this.setState({qState});
+        }
+        // if(this.state.questions[2].answer === TODO) {
+        //     i+=1;
+        //     var qState = this.state.questions;
+        //     qState[2].correct = true;
+        //     this.setState({qState});
+        // }
         return i;
     }
 
@@ -60,19 +74,18 @@ class Questions extends Component {
                 questions: [
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
                         "answer": null,
-                        "validate": null
+                        "correct": false
                     },
                     {
-                        "answer": null,
-                        "validate": null
+                        "answer": null
                     }
                 ],
                 correctAnswers: 0,
