@@ -44,14 +44,46 @@ class Questions extends Component {
         this.setState({consent: toggle})
     }
 
+    calculateScore() {
+        let i = 0;
+        if(this.state.questions[0].answer == '2') {i+=1;}
+        if(this.state.questions[1].answer == '4') {i+=1;}
+        // if(this.state.questions[2].answer === TODO) {this.setState(correctAnswers: this.state.correctAnswers + 1);}
+        return i;
+    }
+
     handleComplete() {
-    event.preventDefault();
-    socket.emit('formComplete', this.state);
-    this.setState({correctAnswers: 0,
-                  currentQuestion: 0,
-                  userEmail: '',
-                  userName: '',
-                  consent: false})
+        let score = this.calculateScore();
+        this.setState({correctAnswers: score}, function() {
+            socket.emit('formComplete', this.state);
+            var resetState = {
+                questions: [
+                    {
+                        "answer": null,
+                        "validate": null
+                    },
+                    {
+                        "answer": null,
+                        "validate": null
+                    },
+                    {
+                        "answer": null,
+                        "validate": null
+                    },
+                    {
+                        "answer": null,
+                        "validate": null
+                    }
+                ],
+                correctAnswers: 0,
+                currentQuestion: 0,
+                userEmail: '',
+                userName: '',
+                consent: false
+            };
+            this.setState(resetState);
+        });
+
     }
 
     updateAnswer(update) {
@@ -90,14 +122,14 @@ class Questions extends Component {
                     ? <div>
                           <Question4 updateAnswer = {update => this.updateAnswer(update)} />
                           <div className="button-row">
-                              <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}>Back <i className="fa fa-chevron-left"></i></button>
+                              <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
                               <button className="next-q-button" type="button" onClick = {() => this.handleComplete()}>Finish <i className="fa fa-chevron-right"></i></button>
                           </div>
                       </div>
                     : <div>
                           <div className="button-row">
                               {this.state.currentQuestion !== 0
-                                  ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}>Back <i className="fa fa-chevron-left"></i></button>
+                                  ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
                                   : null
                               }
                               <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
@@ -134,7 +166,7 @@ function Landing(props) {
 function Question1(props) {
     return (
         <div>
-            <h3 className="question-title">Q1:  Sally likes fizzy drinks very much. At the local supermarket, for every 5 empty bottles she receives a full bottle. As part of a recycling initiative, she manages to collect 77 empty bottles. How many bottles of fizzy drink will she be able to drink in total?</h3>
+            <h3 className="question-title">Q1:  Sally likes fizzy drinks very much. At the local supermarket, for every 5 empty bottles she returns, she gets a full bottle. <br/><br/>As part of a recycling initiative, she manages to collect 77 empty bottles. How many bottles of fizzy drink will she be able to drink in total?</h3>
                 <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">15</label>
@@ -290,7 +322,7 @@ function Question4(props) {
                     <label htmlFor="answer-one">Please outline your answer in the following box:</label>
                     <textarea
                         id="answer-one"
-                        className="answer-textbox"
+                        className="answer-textbox font16"
                         cols="40"
                         rows="6"
                         type="text"

@@ -3,12 +3,12 @@
 }
 
 body {
-    background-color: #1E3F65;
+    background-color: white;
 }
 
 .banner-text {
     text-align: center;
-    color: white;
+    color: black;
     text-shadow: 2px 2px rgba(0, 0, 0, 0.2);
     margin-top: 125px;
 }
@@ -19,7 +19,7 @@ body {
     border: 1px solid #B22418;
     border-radius: 20px;
     padding: 20px;
-    background-color: white;
+    background-color: #F8F8F8;
     /* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
@@ -40,7 +40,7 @@ body {
 .next-q-button {
     float: right;
     box-shadow: rgb(207, 134, 108) 0px 1px 0px 0px inset;
-    background: linear-gradient(rgb(208, 69, 27) 5%, rgb(188, 51, 21) 100%) rgb(208, 69, 27);
+    background: #BA0000;
     border-radius: 3px;
     border: 1px solid rgb(148, 41, 17);
     display: inline-block;

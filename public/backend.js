@@ -13,7 +13,15 @@ app.get('/react-jsx/', (req, res) => {
 });
 
 app.get('/logo-img/', (req, res) => {
-  res.sendFile(path.resolve(__dirname + '/./logo-inverted.png'));
+  res.sendFile(path.resolve(__dirname + '/./ap-logo.png'));
+});
+
+app.get('/favicon/', (req, res) => {
+  res.sendFile(path.resolve(__dirname + '/./favicon.ico'));
+});
+
+app.get('/mark/', (req, res) => {
+  res.sendFile(path.resolve(__dirname + '/./Mark.jpg'));
 });
 
 io.on('connection', (socket) => {
