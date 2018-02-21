@@ -44,59 +44,56 @@ class Questions extends Component {
     }
 
     calculateScore() {
-        let i = 0;
+        let score = 0;
         if(this.state.questions[0].answer == '2') {
-            i+=1;
+            score+=1;
             var qState = this.state.questions;
             qState[0].correct = true;
             this.setState({qState});
         }
         if(this.state.questions[1].answer == '4') {
-            i+=1;
+            score+=1;
             var qState = this.state.questions;
             qState[1].correct = true;
             this.setState({qState});
         }
         // if(this.state.questions[2].answer === TODO) {
-        //     i+=1;
+        //     score+=1;
         //     var qState = this.state.questions;
         //     qState[2].correct = true;
         //     this.setState({qState});
         // }
-        return i;
+        this.setState({correctAnswers: score, currentQuestion: this.state.currentQuestion + 1}, function() {
+            socket.emit('formComplete', this.state);
+        });
     }
 
     handleComplete() {
-        let score = this.calculateScore();
-        this.setState({correctAnswers: score}, function() {
-            socket.emit('formComplete', this.state);
-            var resetState = {
-                questions: [
-                    {
-                        "answer": null,
-                        "correct": false
-                    },
-                    {
-                        "answer": null,
-                        "correct": false
-                    },
-                    {
-                        "answer": null,
-                        "correct": false
-                    },
-                    {
-                        "answer": null
-                    }
-                ],
-                correctAnswers: 0,
-                currentQuestion: 0,
-                userEmail: '',
-                userName: '',
-                consent: false
-            };
-            this.setState(resetState);
-        });
-
+        var resetState = {
+            questions: [
+                {
+                    "answer": null,
+                    "correct": false
+                },
+                {
+                    "answer": null,
+                    "correct": false
+                },
+                {
+                    "answer": null,
+                    "correct": false
+                },
+                {
+                    "answer": null
+                }
+            ],
+            correctAnswers: 0,
+            currentQuestion: 0,
+            userEmail: '',
+            userName: '',
+            consent: false
+        };
+        this.setState(resetState);
     }
 
     updateAnswer(update) {
@@ -132,22 +129,31 @@ class Questions extends Component {
                     : null
                 }
                 { this.state.currentQuestion === 4
-                    ? <div>
-                          <Question4 updateAnswer = {update => this.updateAnswer(update)} />
-                          <div className="button-row">
-                              <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
-                              <button className="next-q-button" type="button" onClick = {() => this.handleComplete()}>Finish <i className="fa fa-chevron-right"></i></button>
-                          </div>
-                      </div>
-                    : <div>
-                          <div className="button-row">
-                              {this.state.currentQuestion !== 0
-                                  ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
-                                  : null
-                              }
-                              <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
-                          </div>
-                      </div>
+                         ? <Question4 updateAnswer = {update => this.updateAnswer(update)} />
+                         : null
+                }
+                { this.state.currentQuestion === 5
+                     ? <div>
+                         <Question5 />
+                         <div>
+                             {this.state.correctAnswers}
+                         </div>
+                         <div className="button-row">
+                           <button className="next-q-button" type="button" onClick = {() => this.handleComplete()}>Restart <i className="fa fa-chevron-right"></i></button>
+                         </div>
+                     </div>
+                     : <div>
+                           <div className="button-row">
+                               {this.state.currentQuestion !== 0
+                                   ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
+                                   : null
+                               }
+                               { this.state.currentQuestion !== 4
+                                ? <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
+                                : <button className="next-q-button" type="button" onClick = {() => this.calculateScore()}>Finish <i className="fa fa-chevron-right"></i></button>
+                               }
+                           </div>
+                       </div>
                 }
             </div>
         );
@@ -169,7 +175,7 @@ function Landing(props) {
                 </div>
                 <div className="gutter-bottom-10">
                     <label className="font16" htmlFor="consent">Are you happy for us to use your details and answers to contact you about opportunities at Age Partnership? </label>
-                    <input className="font16" id="consent" type="checkbox" name="consent" onClick={props.updateCon} value={props.consent} checked={props.consent}/>
+                    <input className="font16" id="consent" type="checkbox" name="consent" onChange={props.updateCon} value={props.consent} checked={props.consent}/>
                 </div>
             </div>
         </div>
@@ -346,6 +352,14 @@ function Question4(props) {
             </div>
         </div>
     );
+}
+
+function Question5(props) {
+  return (
+    <div>
+        <h3 className="question-title">You Scored:</h3>
+    </div>
+  );
 }
 
 export default Questions;
