@@ -31,8 +31,6 @@ body {
 .question-block {
     width: 600px;
     margin: 5px auto 60px auto;
-    border: 1px solid #B8202E;
-    border-radius: 20px;
     padding: 20px;
     background-color: #F8F8F8;
     color: #565656;
@@ -69,18 +67,14 @@ body {
 
 .back-button {
     float: left;
-    box-shadow: black 0px 1px 0px 0px inset;
-    background: #1C1C1C;
     border-radius: 3px;
-    border: 1px solid black;
     display: inline-block;
     cursor: pointer;
-    color: rgb(255, 255, 255);
+    color: black;
     font-family: Arial;
     font-size: 13px;
     padding: 6px 24px;
     text-decoration: none;
-    text-shadow: black 0px 1px 0px;
 }
 
 .answer-textbox {
