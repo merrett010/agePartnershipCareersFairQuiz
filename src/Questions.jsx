@@ -57,12 +57,12 @@ class Questions extends Component {
             qState[1].correct = true;
             this.setState({qState});
         }
-        // if(this.state.questions[2].answer === TODO) {
-        //     score+=1;
-        //     var qState = this.state.questions;
-        //     qState[2].correct = true;
-        //     this.setState({qState});
-        // }
+        if(this.state.questions[2].answer === '4') {
+            score+=1;
+            var qState = this.state.questions;
+            qState[2].correct = true;
+            this.setState({qState});
+        }
         this.setState({correctAnswers: score, currentQuestion: this.state.currentQuestion + 1}, function() {
             socket.emit('formComplete', this.state);
         });
@@ -285,10 +285,10 @@ function Question2(props) {
 function Question3(props) {
     return (
         <div>
-            <h3 className="question-title"><span className="bold">Q3:</span>  PLACEHOLDER QUESTION </h3>
+            <h3 className="question-title"><span className="bold">Q3:</span>  Whilst filling an empty barrel with water, which happens first? </h3>
             <div className="answer-block">
                 <div className="answer-option">
-                    <label htmlFor="answer-one">PLA</label>
+                    <label htmlFor="answer-one">2/3 full</label>
                     <input
                         id="answer-one"
                         type="radio"
@@ -298,7 +298,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-two">CEH</label>
+                    <label htmlFor="answer-two">1/4 empty</label>
                     <input
                         id="answer-two"
                         type="radio"
@@ -308,7 +308,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-three">OLD</label>
+                    <label htmlFor="answer-three">1/2 full</label>
                     <input
                         id="answer-three"
                         type="radio"
@@ -318,7 +318,7 @@ function Question3(props) {
                     />
                 </div>
                 <div className="answer-option">
-                    <label htmlFor="answer-four">ER</label>
+                    <label htmlFor="answer-four">3/4 empty</label>
                     <input
                         id="answer-four"
                         type="radio"
