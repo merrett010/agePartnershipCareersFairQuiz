@@ -21,6 +21,10 @@ class Questions extends Component {
                     "correct": false
                 },
                 {
+                    "answer": null,
+                    "correct": false
+                },
+                {
                     "answer": null
                 }
             ],
@@ -63,6 +67,12 @@ class Questions extends Component {
             qState[2].correct = true;
             this.setState({qState});
         }
+        if(this.state.questions[3].answer === '1') {
+            score+=1;
+            var qState = this.state.questions;
+            qState[3].correct = true;
+            this.setState({qState});
+        }
         this.setState({correctAnswers: score, currentQuestion: this.state.currentQuestion + 1}, function() {
             socket.emit('formComplete', this.state);
         });
@@ -71,6 +81,10 @@ class Questions extends Component {
     handleComplete() {
         var resetState = {
             questions: [
+                {
+                    "answer": null,
+                    "correct": false
+                },
                 {
                     "answer": null,
                     "correct": false
@@ -133,8 +147,12 @@ class Questions extends Component {
                          : null
                 }
                 { this.state.currentQuestion === 5
+                         ? <Question5 updateAnswer = {update => this.updateAnswer(update)} />
+                         : null
+                }
+                { this.state.currentQuestion === 6
                      ? <div>
-                         <Question5 />
+                         <Question6 />
                          <div>
                              {this.state.correctAnswers}
                          </div>
@@ -148,7 +166,7 @@ class Questions extends Component {
                                    ? <button className="back-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion - 1})}><i className="fa fa-chevron-left"></i> Back</button>
                                    : null
                                }
-                               { this.state.currentQuestion !== 4
+                               { this.state.currentQuestion !== 5
                                 ? <button className="next-q-button" type="button" onClick = {() => this.setState({currentQuestion: this.state.currentQuestion + 1})}>Next Question <i className="fa fa-chevron-right"></i></button>
                                 : <button className="next-q-button" type="button" onClick = {() => this.calculateScore()}>Finish <i className="fa fa-chevron-right"></i></button>
                                }
@@ -332,7 +350,7 @@ function Question3(props) {
     );
 }
 
-function Question4(props) {
+function Question5(props) {
     return (
         <div>
             <h3 className="question-title"><span className="bold">Bonus Question:</span>  There are 10 identical bottles of identical pills. 9 of the bottles contain pills that weigh 10mg each but, due to a manufacturing error, 1 bottle contains pills that weigh 11mg each. <br/><br/>Given a weighing scale that you can only use to measure once, how would you find the bottle with the heavier pills? </h3>
@@ -354,7 +372,7 @@ function Question4(props) {
     );
 }
 
-function Question5(props) {
+function Question6(props) {
   return (
     <div>
         <h3 className="question-title">You Scored:</h3>
