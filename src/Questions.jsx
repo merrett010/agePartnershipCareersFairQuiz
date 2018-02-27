@@ -143,12 +143,12 @@ class Questions extends Component {
                     : null
                 }
                 { this.state.currentQuestion === 4
-                         ? <Question4 updateAnswer = {update => this.updateAnswer(update)} />
-                         : null
+                    ? <Question4 updateAnswer = {update => this.updateAnswer(update)} />
+                    : null
                 }
                 { this.state.currentQuestion === 5
-                         ? <Question5 updateAnswer = {update => this.updateAnswer(update)} />
-                         : null
+                    ? <Question5 updateAnswer = {update => this.updateAnswer(update)} />
+                    : null
                 }
                 { this.state.currentQuestion === 6
                      ? <div>
@@ -337,6 +337,56 @@ function Question3(props) {
                 </div>
                 <div className="answer-option">
                     <label htmlFor="answer-four">3/4 empty</label>
+                    <input
+                        id="answer-four"
+                        type="radio"
+                        name="answer"
+                        value="4"
+                        onChange={props.updateAnswer}
+                    />
+                </div>
+            </div>
+        </div>
+    );
+}
+
+function Question4(props) {
+    return (
+        <div>
+            <h3 className="question-title"><span className="bold">Q4:</span>  What is the value of $x at the end of this PHP code snippet?     <br/><br/>    $b = 7;<br/>$a = 4;    <br/>$a = $a * 2;    <br/>$x = ($b > $a) ? $b * 2 : $a - 4; <br/><br/> </h3>
+            <div className="answer-block">
+                <div className="answer-option">
+                    <label htmlFor="answer-one">4</label>
+                    <input
+                        id="answer-one"
+                        type="radio"
+                        name="answer"
+                        value="1"
+                        onChange={props.updateAnswer}
+                    />
+                </div>
+                <div className="answer-option">
+                    <label htmlFor="answer-two">7</label>
+                    <input
+                        id="answer-two"
+                        type="radio"
+                        name="answer"
+                        value="2"
+                        onChange={props.updateAnswer}
+                    />
+                </div>
+                <div className="answer-option">
+                    <label htmlFor="answer-three">14</label>
+                    <input
+                        id="answer-three"
+                        type="radio"
+                        name="answer"
+                        value="3"
+                        onChange={props.updateAnswer}
+                    />
+                </div>
+                <div className="answer-option">
+                    <label htmlFor="answer-four">0</label>
                     <input
                         id="answer-four"
                         type="radio"
