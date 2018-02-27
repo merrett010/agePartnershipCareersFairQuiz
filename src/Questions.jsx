@@ -353,7 +353,8 @@ function Question3(props) {
 function Question4(props) {
     return (
         <div>
-            <h3 className="question-title"><span className="bold">Q4:</span>  What is the value of $x at the end of this PHP code snippet?     <br/><br/>    $b = 7;<br/>$a = 4;    <br/>$a = $a * 2;    <br/>$x = ($b > $a) ? $b * 2 : $a - 4; <br/><br/> </h3>
+            <h3 className="question-title"><span className="bold">Q4:</span>  What is the value of $x at the end of this PHP code snippet?
+            <br/><br/> <span className="monospace">$b = 7;<br/>$a = 4;<br/>$a = $a * 2;<br/>$x = ($b > $a) ? $b * 2 : $a - 4;</span> </h3>
             <div className="answer-block">
                 <div className="answer-option">
                     <label htmlFor="answer-one">4</label>
