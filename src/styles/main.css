@@ -1,46 +1,62 @@
 * {
     font-family: "Open Sans",sans-serif,arial;
+    font-weight: normal;
 }
 
 body {
-    background-color: #1E3F65;
+    background-color: #F7F7F7;
+    padding: 0;
+    margin: 0;
+}
+
+.divider {
+    height: 7px;
+    background-color: #19558C;
+    width: 100%;
+    margin-top: 20px;
+    padding: 0px;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.monospace {
+    font-family: monospace;
 }
 
 .banner-text {
     text-align: center;
-    color: white;
-    text-shadow: 2px 2px rgba(0, 0, 0, 0.2)
+    color: #565656;
+    margin-top: 75px;
+    font-size: 30px;
 }
 
 .question-block {
     width: 600px;
-    margin: 5px auto;
-    border: 1px solid #B22418;
-    border-radius: 20px;
+    margin: 5px auto 60px auto;
     padding: 20px;
-    background-color: white;
+    background-color: #F8F8F8;
+    color: #565656;
     /* box-shadow: [horizontal offset] [vertical offset] [blur radius] [optional spread radius] [color]; */
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
 .answer-block {
-    width: 400px;
-    margin: auto;
     display: flex;
     flex-wrap: nowrap;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin-bottom: 30px;
 }
 
 .answer-option {
-    flex-grow: 1;
-    width: 60px;
-    margin-right: auto;
+
 }
 
 .next-q-button {
     float: right;
     box-shadow: rgb(207, 134, 108) 0px 1px 0px 0px inset;
-    background: linear-gradient(rgb(208, 69, 27) 5%, rgb(188, 51, 21) 100%) rgb(208, 69, 27);
+    background: #B8202E;
     border-radius: 3px;
     border: 1px solid rgb(148, 41, 17);
     display: inline-block;
@@ -53,8 +69,48 @@ body {
     text-shadow: rgb(133, 70, 41) 0px 1px 0px;
 }
 
+.back-button {
+    float: left;
+    border-radius: 3px;
+    display: inline-block;
+    cursor: pointer;
+    color: black;
+    font-family: Arial;
+    font-size: 13px;
+    padding: 6px 24px;
+    text-decoration: none;
+}
+
+.answer-textbox {
+    width: 100%;
+}
+
 .button-row {
     position: relative;
     height: 20px;
     margin-top: 10px;
+}
+
+.central-block {
+    text-align: center;
+}
+
+.gutter-bottom-30 {
+    margin-bottom: 30px;
+}
+
+.gutter-bottom-10 {
+    margin-bottom: 10px;
+}
+
+.font16 {
+    font-size: 16px;
+}
+
+.bottom-banner {
+    height: 50px;
+    background-color: #19558C;
+    width: 100%;
+    bottom: 0;
+    position: fixed;
 }
